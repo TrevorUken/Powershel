@@ -338,19 +338,112 @@ for(initialization; condition; increment)
 <code block 
 }
 
-array
----------------------
+array (list of objects) 
+------------------------------------
+$x = get-proccess 
+($x).gettype()
+$x -is [arry]
+$x.count (see the lines in an array) 
+$array2 = "world", "hello", 5 , 10 ,(get-date)
+$array3 = @()    (empty array) 
+$array[1]   (calls an element) 
+$array[3,5]   (displays only inex postions 3-5) 
+$array[4..array.length]   (gives you a slice from where you started) 
+
+
+jagged array   (an array with instances of other arrays within it) 
+---------------------------------------------------------------------
+$jaggedarray = "y", "E", (1,('hey', 'nahh'), 3 ), "huh" 
+jaggedarray [3][0]    (gets the value 1) 
+jaggedarray [3][0][1]   (gets the value nahh) 
+
+
+
+multi dementional array
+-----------------------------------
+$hello = @(
+	(1,2,3)
+ 	(4,5,6)
+  	(7,8,9)
+   )
+$hello[0][1]    (gets the value 2) 
+
+
+ foreach ( line in $hello){
+ 	if ($line[2] -eq 3){
+  	write-output $line
+   }
+   }
+
+
+
+hashtabel (dictionary ) 
+--------------------------------------------
+
+$mylist = @{first = "john ; last = "doe" ; mid = "bon" ; age = 35} 
+$mylist.first
+$mylist.key
+$mylist.value
+$mylist[key] = what you want to change it to 
+$mylist.remove(key) 
+
+regex 
+---------------------------------------------
+go to cyberchef has ipv4 regex and other prebuilds
+
+
+stream manipulation 
+---------------------------------------------
+"a" (allows variables to be converted 
+`"yes`" (` allows for you to show special caracters) 
+`n  (new line)
+`t  (tab) 
+`b  (back space) 
+
+
+$yes = @" 
+
+(enter what you want)
+
+
+"@ 
+
+
+replace 
+---------------------------------
+"hello john' -replace "john ,world" 
+'server1,server2,server3' -replace '[,]',';'
+(ipconfig) -match 'IPv4'
+'[         john        bon          doe]' -replace '\s+', ' ' 
+"cat","dog" -join "|"
+
+
+functions 
+-------------------------------------------------
+function <name> {
+< code block> 
+} 
+
+
+function <name>(paramater) {
+<code block> 
+}
+
+param(
+<define parameters>
+) 
 
 
 
 
 
 
+regex = match 
+wild cards = like 
 
 
 
-
-
+	
 
 
 
