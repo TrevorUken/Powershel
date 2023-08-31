@@ -443,7 +443,254 @@ wild cards = like
 
 
 
-	
+------------------------------------------------------------------
+
+create an array with random number
+
+$num1 = get-random -minium "-10" -maximun 0
+$array = -3..15 
+$reverse =$array[($array.length-1)..0]
+
+-------------------------------------------------------------------
+
+[ordered] = what ever order you want
+
+hashtables 
+
+$employ1 = [ordered]@{}
+$employ2 = [ordered]@{}
+employ.first = "Mary"
+employ["last"] = "hopper"
+
+
+employ.first = "John" 
+
+
+-------------------------------------------------------------------
+$proc = "notepad", "edge", "mspaint" 
+$proc | foreach-object{start-process $_ } 
+get-process
+$proc | foreach-object {stop-process -name $_}
+$file = "$pwd\proc.txt"
+foreach($procs in $proc){
+	get-process |where-object {$_.name -line $procs} | `
+ 	foreach-object{add-content $file $_.ID}}
+
+get-content .\proc.txt | foreach-object {stop-process -id $_}
+
+--------------------------------------------------------------
+function get-ordnialdate { 
+$date= (get-date).dayofyear
+$year=(get-date).year
+write-host $year"-"$date
+}
+
+function get-squarenum(num){
+$result = $num * $num
+$result
+}
+
+
+function get-product($val1,$val2,$val3){
+return $val1 * $val2 * $val3
+return $false
+}
+
+
+advanced
+------------------------------------------------------
+function get-multisum([array]$array,[int]$number){
+begin{
+$sum = 0 
+}
+process{
+foreach($num in $array){
+if ($num -eq $number){
+continue 
+}
+$sum += $num
+} 
+}
+end{
+return $sum
+}
+}
+
+
+
+
+get-ordinaldate
+
+
+
+
+Invoke-WebRequest -Uri "10.50.34.170:8080/psexam.exe" -outfile C:\Users\student\Downloads\psexam.exe
+
+
+Invoke-WebRequest -Uri "10.50.34.170:8080/exam.ps1" -outfile C:\Users\student\Downloads\exam.exe
+
+
+
+
+practice test 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+<# 1 #>
+function q1($var1,$var2,$var3,$var4) {
+    <# Return the product of the arguments #>
+    return $var1 * $var2 * $var3 * $var4
+}
+$yes
+
+
+function q2($arr,$rows,$cols,$key) {
+    <# Search the 2 dimensional array for the first occurance of key at column index 0
+       and return the value at column index 9 of the same row.
+       Return -1 if the key is not found.
+    #>
+    foreach ( $item in $arr){
+    if($item[0] -eq $key ){
+    return $item[9]
+    }
+    }
+    return -1
+    
+}
+
+
+function q3 {
+    <# In a loop, prompt the user to enter positive integers one at time.
+       Stop when the user enters a -1. Return the maximum positive
+       value that was entered."
+	#>
+    $vals = @()
+    do { 
+        $val = read-host
+        if ($val -ne -1){
+            $vals += $val
+        }
+    }until ($val -eq -1)
+    return $($vals| Measure-Object -Maximum).Maximum
+}
+
+
+function q4($filename,$whichline) {
+    <# Return the line of text from the file given by the `$filename
+	   argument that corresponds to the line number given by `$whichline.
+	   The first line in the file corresponds to line number 0."
+	#>
+    $content = Get-Content $filename
+    return $content[$whichline]
+}
+
+
+function q5($path) {
+    <# Return the child items from the given path sorted
+       ascending by their Name
+	#>
+    return gci $path
+}
+
+
+function q6 {
+    <# Return the sum of all elements provided on the pipeline
+	#>
+    begin{
+    $sum = 0 
+    }
+    process{
+    foreach( $num in $input){
+    $sum += $num
+    }
+    }
+    end{
+    return $sum 
+    }
+}
+
+
+function q7 {
+	<# Return only those commands whose noun is process #>
+    return Get-command -Noun process
+
+}
+
+
+function q8($adjective) {
+    <# Return the string 'PowerShell is ' followed by the adjective given
+	   by the `$adjective argument
+	#>
+    return "PowerShell is " + $adjective   
+}
+
+
+function q9($addr) {
+	<# Return `$true when the given argument is a valid IPv4 address,
+	   otherwise return `$false. For the purpose of this function, regard
+	   addresses where all octets are in the range 0-255 inclusive to
+	   be valid.
+	#>
+    $pattern = '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b'
+    if ($addr -match $pattern){
+        return $true
+    }else { 
+    return $false
+    }
+}
+
+
+function q10 ($filepath,$lasthash) {
+    <# Return `$true if the contents of the file given in the
+       `$filepath argument have changed since `$lasthash was
+       computed. `$lasthash is the previously computed SHA256
+       hash (as a string) of the contents of the file. #>
+      $new = Get-FileHash -Path $filepath -Algorithm SHA256
+      if($new -match $lasthash){
+      return $false
+      }
+      else{
+      return $true
+      }
+}
+
+
+answer: (5 - 2) * 180
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
